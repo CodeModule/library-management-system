@@ -41,6 +41,11 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
+
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
     
     
 }
