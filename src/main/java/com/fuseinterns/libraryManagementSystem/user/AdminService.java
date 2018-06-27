@@ -16,17 +16,17 @@ public class AdminService {
 	{
 
 		userRepository.save(admin);
-		
+
 	}
-	
+
 	public void deleteAdmin(Admin admin)
 	{
 		userRepository.delete(admin);
 	}
-	
+
 	//public void
-	
-	
+
+
 
 
 

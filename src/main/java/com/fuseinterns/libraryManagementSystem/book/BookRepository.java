@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface BookRepository extends MongoRepository<Book,String> {
 
-    public List<Book> findByName (String name);
-    public Book findByBookId(String id);
+    List<Book> findByName (String name);
 }
