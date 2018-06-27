@@ -1,6 +1,6 @@
 package com.fuseinterns.libraryManagementSystem.user;
-
-public interface MainUser {
+//main user
+public interface MainUser  {
 
 
 }
