@@ -10,10 +10,11 @@ public class AdminService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	//public User
 	public void addAdmin(Admin admin)
 	{
+<<<<<<< HEAD
 		userRepository.save(admin);
 		
 	}
@@ -26,4 +27,9 @@ public class AdminService {
 	//public void
 	
 	
+=======
+
+	}
+
+>>>>>>> 8dfe7e59b3d9f686d228d8f09be553d1c522fee5
 }

@@ -8,9 +8,9 @@ public class Admin implements MainUser{
 	private String firstName;
 	private String lastName;
 	private String email;
-	
-	
-	
+
+
+
 	public Admin(String id, String firstName, String lastName, String email) {
 		super();
 		this.id = id;
@@ -42,7 +42,7 @@ public class Admin implements MainUser{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
+
 
 }
