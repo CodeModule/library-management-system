@@ -2,7 +2,7 @@ package com.fuseinterns.libraryManagementSystem.user;
 
 import org.springframework.data.annotation.Id;
 
-public class Admin {
+public class Admin implements MainUser{
 	@Id
 	private String id;
 	private String firstName;
