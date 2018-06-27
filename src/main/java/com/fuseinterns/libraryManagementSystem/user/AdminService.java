@@ -12,9 +12,18 @@ public class AdminService {
 	private UserRepository userRepository;
 	
 	//public User
-	public void addBook(Book book)
+	public void addAdmin(Admin admin)
 	{
+		userRepository.save(admin);
 		
 	}
+	
+	public void deleteAdmin(Admin admin)
+	{
+		userRepository.delete(admin);
+	}
+	
+	//public void
+	
 	
 }
