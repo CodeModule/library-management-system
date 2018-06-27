@@ -25,7 +25,6 @@ public class BookController {
         return new ResponseEntity<>(this.bookService.addBook(book), HttpStatus.CREATED);
     }
 
-
     @RequestMapping(value = "/api/books/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Book> getBookById(@PathVariable String id){
         return new ResponseEntity<>(this.bookService.getBookById(id), HttpStatus.OK);
