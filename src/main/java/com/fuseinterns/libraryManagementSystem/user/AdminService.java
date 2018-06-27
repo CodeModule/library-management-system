@@ -23,8 +23,10 @@ public class AdminService {
 		
 	
 
-	public void deleteAdmin(Admin admin)
+	public void deleteAdmin(String id)
 	{
+		Admin admin= adminRepository.findByName(id);
+		if(admin!=null)
 		adminRepository.delete(admin);
 	}
 	
@@ -37,9 +39,7 @@ public class AdminService {
 	{
 		return (List<Admin>) adminRepository.findAll();
 	}
-	
-	//DELETE LEFT
-	
+		
 	
 
 	//public void
