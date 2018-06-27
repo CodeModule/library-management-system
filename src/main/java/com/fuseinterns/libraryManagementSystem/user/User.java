@@ -32,4 +32,13 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+	public User(String id, String firstName, String lastName) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+    
+    
 }
