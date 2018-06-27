@@ -46,6 +46,6 @@ public class User implements MainUser{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-    
-    
+
+
 }

@@ -5,10 +5,17 @@ public class Book {
 	private String author;
 	private String bookId;
 	private String price;
-	
-	
-	
-	public Book(String name, String author, String bookId, String price) 
+	private int quantity;
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public Book(String name, String author, String bookId, String price)
 	{
 		super();
 		this.name = name;
