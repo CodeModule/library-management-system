@@ -8,6 +8,8 @@ public class User {
     private String id;
     private String firstName;
     private String lastName;
+    private String email;
+    private double fine;
 
     public String getId() {
         return id;
