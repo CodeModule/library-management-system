@@ -1,9 +1,14 @@
 package com.fuseinterns.libraryManagementSystem.book;
 
+import org.springframework.data.annotation.Id;
+
 public class Book {
+    @Id
+    private String id;
 	private String name;
 	private String author;
-	private String bookId;
+
+
 	private String price;
 	private int quantity;
 
@@ -15,12 +20,12 @@ public class Book {
 		this.quantity = quantity;
 	}
 
-	public Book(String name, String author, String bookId, String price)
+	public Book(String name, String author, String id, String price)
 	{
 		super();
 		this.name = name;
 		this.author = author;
-		this.bookId = bookId;
+		this.id = id;
 		this.price = price;
 	}
 	
@@ -40,13 +45,13 @@ public class Book {
 	{
 		this.author = author;
 	}
-	public String getBookId() 
+	public String getId()
 	{
-		return bookId;
+		return id;
 	}
-	public void setBookId(String bookId) 
+	public void setId(String id)
 	{
-		this.bookId = bookId;
+		this.id = id;
 	}
 	public String getPrice() 
 	{

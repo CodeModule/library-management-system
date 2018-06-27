@@ -12,21 +12,36 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-    public Book addBook(Book book){
+    public Book addBook(Book book) {
         this.bookRepository.save(book);
         return book;
     }
 
-    public List<Book> getBookByName(String name){
+    public List<Book> getBookByName(String name) {
         return this.bookRepository.findByName(name);
     }
 
-    public Book getBookById(String id){
-        return  this.bookRepository.findByBookId(id);
+    public Book getBookById(String id) {
+        return this.bookRepository.findById(id).orElse(null);
     }
 
     public List<Book> getAllBooks() {
         return this.bookRepository.findAll();
     }
 
+    public Book updateBook(String id, Book book) {
+        this.bookRepository.findById(id).orElse(null);
+        if(book!=null){
+            this.bookRepository.save(book);
+        }
+
+        return null;
+    }
+
+    public Book deleteBook(String id) {
+        Book book = this.bookRepository.findById(id).orElse(null);
+        if (book != null)
+            this.bookRepository.delete(book);
+        return book;
+    }
 }

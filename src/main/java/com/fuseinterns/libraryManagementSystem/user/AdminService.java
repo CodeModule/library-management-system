@@ -21,6 +21,8 @@ public class AdminService {
 		
 	}
 		
+	
+
 	public void deleteAdmin(Admin admin)
 	{
 		adminRepository.delete(admin);
@@ -39,6 +41,10 @@ public class AdminService {
 	//DELETE LEFT
 	
 	
+
+	//public void
+
+
 
 
 

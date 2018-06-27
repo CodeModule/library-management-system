@@ -30,6 +30,6 @@ public class AdminController {
 	{
 		adminService.addAdmin(admin);
 	}
-	@
+	//@
 
 }
