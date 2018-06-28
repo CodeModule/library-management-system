@@ -39,13 +39,7 @@ public class BorrowController {
 		  
 	}
 	
-	@RequestMapping(value = "/api/issue" , method= RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
-	public List<Borrow> getIssued(@RequestBody BorroRequest borroRequest) {
-		
-			return borrowService.showIssued();
-	}
 	
-		  
 	
 	public Date getCurrentdate() {
 		return new Date(new java.util.Date().getTime());
