@@ -14,11 +14,12 @@ import java.util.List;
 public class NotificationController {
 
     @Autowired
-    NotificationService notificationService;
+    private NotificationService notificationService;
 
 
     @RequestMapping(value = "/api/notifications", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Notification>> getNotifications(){
-        return new ResponseEntity<>(this.notificationService.getNotifications(),HttpStatus.OK);
+    public ResponseEntity<List<Notification>> getNotifications() {
+
+        return new ResponseEntity<>(this.notificationService.getNotifications(), HttpStatus.OK);
     }
 }
