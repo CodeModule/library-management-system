@@ -14,17 +14,16 @@ import com.fuseinterns.libraryManagementSystem.book.BookRepository;
 public class BorrowService {
 	Scanner sc = new Scanner(System.in);
 	
-	@Autowired
-	BookRepository bookRepository;
+
 	
 	@Autowired
-	static
 	BorrowRepository borrowRepository;
 	
 
 	
 	public Borrow add(Borrow b){
-		return borrowRepository.save(b);
+		borrowRepository.save(b);
+		return b;
 	}
 	
 	public boolean receiveBook(int id) {
