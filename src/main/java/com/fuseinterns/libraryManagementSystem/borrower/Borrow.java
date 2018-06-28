@@ -1,39 +1,39 @@
 package com.fuseinterns.libraryManagementSystem.borrower;
 
-import com.fuseinterns.libraryManagementSystem.book.*;
-import com.fuseinterns.libraryManagementSystem.user.*;
-import org.springframework.data.annotation.Id;
-
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+
+import com.fuseinterns.libraryManagementSystem.book.*;
+import com.fuseinterns.libraryManagementSystem.user.*;
 public class Borrow {
 	
-	
 	@Id
-    private int id;
-	private int returned;
+	private int id;
 	
+	private int returned;
 	
 	public int getReturned() {
 		return returned;
 	}
+	
 	public void setReturned(int returned) {
 		this.returned = returned;
 	}
 	
 	private User user;
-	
-	
 	private Book book;
 	
 	private Date borrowedDate;
-	private Date returnDate;
+	private Date returnedDate;
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public User getUser() {
 		return user;
 	}
@@ -52,15 +52,14 @@ public class Borrow {
 	public void setBorrowedDate(Date borrowedDate) {
 		this.borrowedDate = borrowedDate;
 	}
-	public Date getReturnDate() {
-		return returnDate;
+	public Date getReturnedDate() {
+		return returnedDate;
 	}
-	public void setReturnDate(Date returnDate) {
-		this.returnDate = returnDate;
+	public void setReturnedDate(Date returnedDate) {
+		this.returnedDate = returnedDate;
 	}
-	
-	
-	
-	
 
+
+	
+	
 }
