@@ -24,14 +24,19 @@ public class UserService {
 			userRepository.delete(user);
 	}
 
-	public List<User> findByName(String firstName) {
-		return (List<User>)userRepository.findByFirstName(firstName);
-	}
+//	public List<User> findByName(String firstName) {
+//		return (List<User>)userRepository.findByFirstName(firstName);
+//	}
+
 
 	public List<User> getAllUser() {
 		return (List<User>) userRepository.findAll();
 	}
 
+
+	public User getUser(String id){
+		return userRepository.findById(id).orElse(null);
+	}
 	// public void
 
 }

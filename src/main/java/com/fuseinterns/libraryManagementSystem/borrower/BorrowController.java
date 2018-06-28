@@ -30,8 +30,7 @@ public class BorrowController {
 		if(book!=null && book.getQuantity()>0) {
 			book.issued();
 			Borrow borrow = new Borrow();
-			borrow.setBook(bookService.getBookById(borroRequest.getBookId()));
-
+			borrow.setBook(book);
 			borrow.setBorrowedDate(getCurrentdate());
 			borrow.setReturnedDate(getDateAfterSpecificDays(7));
 			
