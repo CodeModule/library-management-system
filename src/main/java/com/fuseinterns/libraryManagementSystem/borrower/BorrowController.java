@@ -32,12 +32,12 @@ public class BorrowController {
 		Book book = bookService.getBookById(borroRequest.getBookId());
 		if(book!=null && book.getQuantity()>0) {
 			Borrow borrow = new Borrow();
-<<<<<<< HEAD
+
 			borrow.setBook(book);
-=======
+
 			borrow.setBook(bookService.getBookById(borroRequest.getBookId()));
 			borrow.setUser(userService.getUserById(borroRequest.getUserId()));
->>>>>>> 413bb7d42d92f69ce5b11cf0910a8fcbb7242f0d
+
 			borrow.setBorrowedDate(getCurrentdate());
 			borrow.setReturnedDate(getDateAfterSpecificDays(7));
 			
@@ -46,13 +46,7 @@ public class BorrowController {
 	
 		  
 	}
-	
-	@RequestMapping(value = "/acceptbook", method = RequestMethod.POST)
-	public void acceptBook(@RequestBody BorroRequest borroRequest ) {
-		Book book = bookService.getBookById(borroRequest.getBookId());
 
-		borrowService.receiveBook(book);
-	}
 	
 	@RequestMapping(value = "/api/issue" , method= RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
 	public List<Borrow> getIssued() {
