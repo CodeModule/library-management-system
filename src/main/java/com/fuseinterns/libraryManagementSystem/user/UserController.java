@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fuseinterns.libraryManagementSystem.book.Book;
+
 @RestController
 public class UserController {
 	
@@ -36,5 +38,10 @@ public class UserController {
     public  void deleteUser(@PathVariable String id){
          this.userService.deleteUser(id);
     }
+	
+	 @RequestMapping(value = "/api/user/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	    public ResponseEntity<User> getUserById(@PathVariable String id){
+	        return new ResponseEntity<>(this.userService.getUserById(id), HttpStatus.OK);
+	    }
 
 }

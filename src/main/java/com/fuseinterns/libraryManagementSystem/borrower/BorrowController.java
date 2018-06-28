@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fuseinterns.libraryManagementSystem.book.Book;
 import com.fuseinterns.libraryManagementSystem.book.BookService;
+import com.fuseinterns.libraryManagementSystem.user.UserService;
 
 
 
@@ -22,15 +23,21 @@ public class BorrowController {
 	private BorrowService borrowService;
 	@Autowired
 	private BookService bookService;
+	@Autowired
+	private UserService userService;
 	
 	
 	@RequestMapping(value = "/api/issue" , method= RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
 	public void issueBooktoUser(@RequestBody BorroRequest borroRequest) {
 		Book book = bookService.getBookById(borroRequest.getBookId());
 		if(book!=null && book.getQuantity()>0) {
-			book.issued();
 			Borrow borrow = new Borrow();
+<<<<<<< HEAD
 			borrow.setBook(book);
+=======
+			borrow.setBook(bookService.getBookById(borroRequest.getBookId()));
+			borrow.setUser(userService.getUserById(borroRequest.getUserId()));
+>>>>>>> 413bb7d42d92f69ce5b11cf0910a8fcbb7242f0d
 			borrow.setBorrowedDate(getCurrentdate());
 			borrow.setReturnedDate(getDateAfterSpecificDays(7));
 			
@@ -40,13 +47,18 @@ public class BorrowController {
 		  
 	}
 	
+	@RequestMapping(value = "/acceptbook", method = RequestMethod.POST)
+	public void acceptBook(@RequestBody BorroRequest borroRequest ) {
+		Book book = bookService.getBookById(borroRequest.getBookId());
+
+		borrowService.receiveBook(book);
+	}
+	
 	@RequestMapping(value = "/api/issue" , method= RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
 	public List<Borrow> getIssued() {
 		
 			return borrowService.showIssued();
 	}
-	
-		  
 	
 	public Date getCurrentdate() {
 		return new Date(new java.util.Date().getTime());
