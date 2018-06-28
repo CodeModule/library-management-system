@@ -18,6 +18,7 @@ public class EventListener implements ApplicationListener<BookEvents> {
         notification.setTitle(event.getBookId());
         notification.setMessage(event.getMessage());
         notification.setBookId(event.getBookId());
+        notification.setUser(event.getUser());
         this.notificationService.addNotification(notification);
     }
 }
