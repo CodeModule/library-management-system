@@ -1,8 +1,12 @@
 package com.fuseinterns.libraryManagementSystem.user;
 
-import org.springframework.data.annotation.Id;
+import java.io.Serializable;
 
-public class Admin {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="Admins")
+public class Admin implements Serializable{
 	@Id
 	private String id;
 	private String firstName;

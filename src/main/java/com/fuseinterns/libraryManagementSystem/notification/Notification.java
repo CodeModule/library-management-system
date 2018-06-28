@@ -1,12 +1,22 @@
 package com.fuseinterns.libraryManagementSystem.notification;
 
-import org.springframework.data.annotation.Id;
 
 public class Notification {
 
     private String title;
+    private String user;
     private String message;
     private String bookId;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+
 
     public String getBookId() {
         return bookId;
@@ -15,7 +25,6 @@ public class Notification {
     public void setBookId(String bookId) {
         this.bookId = bookId;
     }
-
 
 
     public String getTitle() {
