@@ -6,8 +6,6 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fuseinterns.libraryManagementSystem.book.BookRepository;
-
 //import com.fuseinterns.libraryManagementSystem.user.User;
 
 @Service
@@ -24,6 +22,10 @@ public class BorrowService {
 	public Borrow add(Borrow b){
 		borrowRepository.save(b);
 		return b;
+	}
+	
+	public List<Borrow> showIssued() {
+		return borrowRepository.findAll();
 	}
 	
 	public boolean receiveBook(int id) {

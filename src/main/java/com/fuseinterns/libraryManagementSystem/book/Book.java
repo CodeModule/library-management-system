@@ -54,11 +54,9 @@ public class Book {
 		this.quantity = quantity;
 	}
 	
-	 public boolean issued(User user) {
+	 public boolean issued() {
 	        if(getQuantity()>0){
 	            this.setQuantity(this.getQuantity()-1);
-	        }else{
-	            System.out.println("Out of Stock");
 	        }
 	        return false;
 	    }
