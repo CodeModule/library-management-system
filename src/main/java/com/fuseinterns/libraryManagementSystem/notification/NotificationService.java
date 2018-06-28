@@ -11,7 +11,11 @@ public class NotificationService {
     @Autowired
     private NotificationRepository notificationRepository;
 
-    public List<Notification> getNotifications(){
+    public List<Notification> getNotifications() {
+
         return notificationRepository.findAll();
+    }
+    public void addNotification(Notification notification){
+        this.notificationRepository.save(notification);
     }
 }

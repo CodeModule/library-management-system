@@ -1,13 +1,17 @@
 package com.fuseinterns.libraryManagementSystem.book;
 
 
+import com.fuseinterns.libraryManagementSystem.book.events.BookEvents;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class BookService {
+    @Autowired
+    private ApplicationEventPublisher applicationEventPublisher;
 
     @Autowired
     private BookRepository bookRepository;
@@ -26,6 +30,9 @@ public class BookService {
     }
 
     public List<Book> getAllBooks() {
+        System.out.println("Here");
+        this.applicationEventPublisher.publishEvent(new BookEvents(this,"Ishan","Book Searched by User"));
+
         return this.bookRepository.findAll();
     }
 
