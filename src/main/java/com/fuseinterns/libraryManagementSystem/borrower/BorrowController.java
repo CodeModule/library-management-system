@@ -31,7 +31,6 @@ public class BorrowController {
 	public void issueBooktoUser(@RequestBody BorroRequest borroRequest) {
 		Book book = bookService.getBookById(borroRequest.getBookId());
 		if(book!=null && book.getQuantity()>0) {
-			book.issued();
 			Borrow borrow = new Borrow();
 			borrow.setBook(bookService.getBookById(borroRequest.getBookId()));
 			borrow.setUser(userService.getUserById(borroRequest.getUserId()));
@@ -42,6 +41,13 @@ public class BorrowController {
 		}
 	
 		  
+	}
+	
+	@RequestMapping(value = "/acceptbook", method = RequestMethod.POST)
+	public void acceptBook(@RequestBody BorroRequest borroRequest ) {
+		Book book = bookService.getBookById(borroRequest.getBookId());
+
+		borrowService.receiveBook(book);
 	}
 	
 	@RequestMapping(value = "/api/issue" , method= RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
