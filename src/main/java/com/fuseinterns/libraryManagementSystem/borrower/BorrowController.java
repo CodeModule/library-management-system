@@ -30,6 +30,8 @@ public class BorrowController {
 		if(book!=null && book.getQuantity()>0) {
 			book.issued();
 			Borrow borrow = new Borrow();
+			borrow.setBook(bookService.getBookById(borroRequest.getBookId()));
+
 			borrow.setBorrowedDate(getCurrentdate());
 			borrow.setReturnedDate(getDateAfterSpecificDays(7));
 			
@@ -40,7 +42,7 @@ public class BorrowController {
 	}
 	
 	@RequestMapping(value = "/api/issue" , method= RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
-	public List<Borrow> getIssued(@RequestBody BorroRequest borroRequest) {
+	public List<Borrow> getIssued() {
 		
 			return borrowService.showIssued();
 	}

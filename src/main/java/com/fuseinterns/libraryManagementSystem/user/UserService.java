@@ -24,8 +24,8 @@ public class UserService {
 			userRepository.delete(user);
 	}
 
-	public List<User> findByName(String name) {
-		return (List<User>)userRepository.findByfirstName(name);
+	public List<User> findByName(String firstName) {
+		return (List<User>)userRepository.findByFirstName(firstName);
 	}
 
 	public List<User> getAllUser() {
