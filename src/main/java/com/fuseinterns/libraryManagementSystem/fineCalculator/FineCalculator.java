@@ -1,5 +1,7 @@
 package com.fuseinterns.libraryManagementSystem.fineCalculator;
 
+import com.fuseinterns.libraryManagementSystem.borrower.Borrow;
+import com.fuseinterns.libraryManagementSystem.borrower.BorrowService;
 import com.fuseinterns.libraryManagementSystem.notification.NotificationEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,9 +11,13 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Component
 public class FineCalculator {
+
+    @Autowired
+    private BorrowService borrowService;
 
     private static final Logger LOG = LoggerFactory.getLogger(FineCalculator.class);
     @Autowired
@@ -19,12 +25,15 @@ public class FineCalculator {
 
     @Scheduled(fixedRate = 30000)
     public void create() {
-        final LocalDateTime start = LocalDateTime.now();
+         LocalDateTime currentDate = LocalDateTime.now();
+         for(Borrow borrow : borrowService.showIssued() ){
+             
+         }
         this.applicationEventPublisher.publishEvent(new NotificationEvents(this, "Java Progrogramming", "Fine Due Rs. 5", "ishan"));
 
 //            eventRepository.save(
 //                    new Event(new EventKey("An event type", start, UUID.randomUUID()), Math.random() * 1000));
-        LOG.debug("Event created!");
     }
+
 
 }
