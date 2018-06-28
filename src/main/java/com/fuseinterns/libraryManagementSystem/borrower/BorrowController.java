@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fuseinterns.libraryManagementSystem.book.Book;
 import com.fuseinterns.libraryManagementSystem.book.BookService;
+import com.fuseinterns.libraryManagementSystem.user.UserService;
 
 
 
@@ -22,6 +23,8 @@ public class BorrowController {
 	private BorrowService borrowService;
 	@Autowired
 	private BookService bookService;
+	@Autowired
+	private UserService userService;
 	
 	
 	@RequestMapping(value = "/api/issue" , method= RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
@@ -31,7 +34,7 @@ public class BorrowController {
 			book.issued();
 			Borrow borrow = new Borrow();
 			borrow.setBook(bookService.getBookById(borroRequest.getBookId()));
-
+			borrow.setUser(userService.getUserById(borroRequest.getUserId()));
 			borrow.setBorrowedDate(getCurrentdate());
 			borrow.setReturnedDate(getDateAfterSpecificDays(7));
 			

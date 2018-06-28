@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fuseinterns.libraryManagementSystem.book.Book;
+
 @Service
 public class UserService {
 
@@ -31,6 +33,10 @@ public class UserService {
 	public List<User> getAllUser() {
 		return (List<User>) userRepository.findAll();
 	}
+	
+	public User getUserById(String id) {
+        return this.userRepository.findById(id).orElse(null);
+    }
 
 	// public void
 
