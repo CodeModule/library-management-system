@@ -1,9 +1,13 @@
 package com.fuseinterns.libraryManagementSystem.book;
 
+import com.fuseinterns.libraryManagementSystem.notification.NotificationEvents;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.annotation.Id;
 
 
 public class Book {
+
 	@Id
 	private String id;
 	private String name;
@@ -47,9 +51,11 @@ public class Book {
 		this.price = price;
 	}
 	public int getQuantity() {
+
 		return quantity;
 	}
 	public void setQuantity(int quantity) {
+
 		this.quantity = quantity;
 	}
 	

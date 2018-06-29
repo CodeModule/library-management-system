@@ -49,18 +49,24 @@ public class BorrowController {
 			borrow.setBorrowedDate(getCurrentdate());
 			borrow.setReturnedDate(getDateAfterSpecificDays(7));
 			borrowService.add(borrow);
-			if(book.getQuantity()==0) {
-				 this.applicationEventPublisher.publishEvent(new NotificationEvents(this,book.getId(),"Book Out of Stock","admin"));
+
+			int quantity = book.getQuantity()-1;
+			if(quantity==0){
+				this.applicationEventPublisher.publishEvent(new NotificationEvents(this,book.getId(),"Book Out of Stock","admin"));
+
 			}
-			else {
-			book.setQuantity(book.getQuantity()-1);
+			book.setQuantity(quantity);
+
 			bookService.addBook(book);
 			return new ResponseEntity<>(borrow,HttpStatus.CREATED);
-			} return new ResponseEntity<>(null,HttpStatus.FORBIDDEN);
+
 			
-		} 
+		} else{
+			this.applicationEventPublisher.publishEvent(new NotificationEvents(this,book.getId(),"Book Out of Stock",user.getId()));
+
+		}
 		
-		return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(new Borrow(),HttpStatus.NOT_FOUND);
 	
 		  
 	}
@@ -81,7 +87,7 @@ public class BorrowController {
 			return new ResponseEntity<>(retun,HttpStatus.CREATED);
 		}
 		
-		return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(new Return(),HttpStatus.NOT_FOUND);
 	}
 	
 	
