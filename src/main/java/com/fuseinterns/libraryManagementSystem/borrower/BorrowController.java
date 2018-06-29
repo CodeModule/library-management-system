@@ -25,6 +25,8 @@ public class BorrowController {
 	private BookService bookService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private NextSequenceService nextService;
 	
 	
 	@RequestMapping(value = "/api/issue" , method= RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
@@ -32,21 +34,28 @@ public class BorrowController {
 		Book book = bookService.getBookById(borroRequest.getBookId());
 		if(book!=null && book.getQuantity()>0) {
 			Borrow borrow = new Borrow();
+<<<<<<< HEAD
+			borrow.setId(nextService.getNextSequence("customSequences"));
+=======
 
 			borrow.setBook(book);
 
+>>>>>>> 0e82cb0da4db79a034f6778f94f0d37dbf22a9bd
 			borrow.setBook(bookService.getBookById(borroRequest.getBookId()));
 			borrow.setUser(userService.getUserById(borroRequest.getUserId()));
 
 			borrow.setBorrowedDate(getCurrentdate());
 			borrow.setReturnedDate(getDateAfterSpecificDays(7));
-			
 			borrowService.add(borrow);
 		}
 	
 		  
 	}
+<<<<<<< HEAD
+	
+=======
 
+>>>>>>> 0e82cb0da4db79a034f6778f94f0d37dbf22a9bd
 	
 	@RequestMapping(value = "/api/issue" , method= RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
 	public List<Borrow> getIssued() {

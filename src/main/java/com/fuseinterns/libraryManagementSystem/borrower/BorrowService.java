@@ -12,7 +12,7 @@ import com.fuseinterns.libraryManagementSystem.book.Book;
 
 @Service
 public class BorrowService {
-	Scanner sc = new Scanner(System.in);
+	
 	
 
 	
@@ -22,6 +22,7 @@ public class BorrowService {
 
 	
 	public Borrow add(Borrow b){
+		
 		borrowRepository.save(b);
 		return b;
 	}
@@ -30,11 +31,11 @@ public class BorrowService {
 		return borrowRepository.findAll();
 	}
 	
-	public void receiveBook(Book book) {
-		List<Borrow> borrows = borrowRepository.findByBookIdAndReturned(book, 0);
-		Borrow borrow = borrows.get(0);
-		borrowRepository.save(borrow);
-	
-	}
+//	public void receiveBook(Book book) {
+//		List<Borrow> borrows = borrowRepository.findByBookIdAndReturned(book, 0);
+//		Borrow borrow = borrows.get(0);
+//		borrowRepository.save(borrow);
+//	
+//	}
 
 }
