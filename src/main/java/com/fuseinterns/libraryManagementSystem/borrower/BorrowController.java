@@ -5,7 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fuseinterns.libraryManagementSystem.book.Book;
 import com.fuseinterns.libraryManagementSystem.book.BookService;
+import com.fuseinterns.libraryManagementSystem.user.User;
 import com.fuseinterns.libraryManagementSystem.user.UserService;
 
 
@@ -25,44 +29,41 @@ public class BorrowController {
 	private BookService bookService;
 	@Autowired
 	private UserService userService;
+	
 	@Autowired
-	private NextSequenceService nextService;
+	private BorrowRepository borrowRepository;
 	
 	
 	@RequestMapping(value = "/api/issue" , method= RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
-	public void issueBooktoUser(@RequestBody BorroRequest borroRequest) {
+	public ResponseEntity<Borrow> issueBooktoUser(@RequestBody BorroRequest borroRequest) {
 		Book book = bookService.getBookById(borroRequest.getBookId());
-		if(book!=null && book.getQuantity()>0) {
+		User user = userService.getUserById(borroRequest.getUserId());
+		if(book!=null && book.getQuantity()>0 && user!=null) {
 			Borrow borrow = new Borrow();
-<<<<<<< HEAD
-			borrow.setId(nextService.getNextSequence("customSequences"));
-=======
-
-			borrow.setBook(book);
-
->>>>>>> 0e82cb0da4db79a034f6778f94f0d37dbf22a9bd
-			borrow.setBook(bookService.getBookById(borroRequest.getBookId()));
-			borrow.setUser(userService.getUserById(borroRequest.getUserId()));
-
+//			Book books = new Book();
+//			String id = books.getId();
+//			bookService.deleteCopies(id);
+			borrow.setId(book.getId()+user.getId());
 			borrow.setBorrowedDate(getCurrentdate());
 			borrow.setReturnedDate(getDateAfterSpecificDays(7));
 			borrowService.add(borrow);
-		}
+			book.setQuantity(book.getQuantity()-1);
+			bookService.addBook(book);
+			return new ResponseEntity<>(borrow,HttpStatus.CREATED);
+		} 
+		
+		return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
 	
 		  
 	}
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 0e82cb0da4db79a034f6778f94f0d37dbf22a9bd
 	
 	@RequestMapping(value = "/api/issue" , method= RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
 	public List<Borrow> getIssued() {
 		
 			return borrowService.showIssued();
 	}
-	
+	 
 	public Date getCurrentdate() {
 		return new Date(new java.util.Date().getTime());
 	}

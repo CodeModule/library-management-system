@@ -31,11 +31,12 @@ public class BorrowService {
 		return borrowRepository.findAll();
 	}
 	
+	
+	
 //	public void receiveBook(Book book) {
 //		List<Borrow> borrows = borrowRepository.findByBookIdAndReturned(book, 0);
 //		Borrow borrow = borrows.get(0);
 //		borrowRepository.save(borrow);
-//	
 //	}
 
 }

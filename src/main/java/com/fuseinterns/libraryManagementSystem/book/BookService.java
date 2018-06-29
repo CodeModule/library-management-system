@@ -51,4 +51,10 @@ public class BookService {
             this.bookRepository.delete(book);
         return book;
     }
+    
+//    public void deleteCopies(String id) {
+//        Book book = this.bookRepository.findById(id).orElse(null);
+//        book.setQuantity(book.getQuantity()-1);
+//       
+//    }
 }

@@ -54,11 +54,4 @@ public class Book {
 		this.quantity = quantity;
 	}
 	
-	 public boolean issued() {
-	        if(getQuantity()>0){
-	            this.setQuantity(this.getQuantity()-1);
-	        }
-	        return false;
-	    }
-	
 }
