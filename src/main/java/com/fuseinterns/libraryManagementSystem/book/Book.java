@@ -2,7 +2,6 @@ package com.fuseinterns.libraryManagementSystem.book;
 
 import org.springframework.data.annotation.Id;
 
-import com.fuseinterns.libraryManagementSystem.user.User;
 
 public class Book {
 	@Id

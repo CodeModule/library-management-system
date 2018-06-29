@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-//import com.fuseinterns.libraryManagementSystem.user.User;
+
 
 @Service
 public class BorrowService {
@@ -32,11 +32,7 @@ public class BorrowService {
 	public Borrow getBorrowById(String id) {
 		return borrowRepository.findById(id).orElse(null);
 	}
-//	public void receiveBook(Book book) {
-//		List<Borrow> borrows = borrowRepository.findByBookIdAndReturned(book, 0);
-//		Borrow borrow = borrows.get(0);
-//		borrowRepository.save(borrow);
-//	}
+
 public Borrow delete(Borrow b){
 
    borrowRepository.delete(b);

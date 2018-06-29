@@ -8,12 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.fuseinterns.libraryManagementSystem.book.Book;
 import com.fuseinterns.libraryManagementSystem.book.BookService;
 import com.fuseinterns.libraryManagementSystem.finecalculator.FineCalculator;
@@ -43,9 +41,6 @@ public class BorrowController {
 		User user = userService.getUserById(borroRequest.getUserId());
 		if(book!=null && book.getQuantity()>0 && user!=null) {
 			Borrow borrow = new Borrow();
-//			Book books = new Book();
-//			String id = books.getId();
-//			bookService.deleteCopies(id);
 			borrow.setId(book.getId()+user.getId());
 			borrow.setBorrowedDate(getCurrentdate());
 			borrow.setReturnedDate(getDateAfterSpecificDays(7));
@@ -99,7 +94,4 @@ public class BorrowController {
 		return new Date(c.getTimeInMillis());
 
 	}
-
-	
-
 }
