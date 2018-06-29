@@ -1,22 +1,24 @@
 package com.fuseinterns.libraryManagementSystem.borrower;
 
 import java.util.Date;
-
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fuseinterns.libraryManagementSystem.book.*;
 import com.fuseinterns.libraryManagementSystem.user.*;
+@Document(collection="borrow")
 public class Borrow {
 	
 	@Id
 	private int id;
-	
+
 	private int returned;
 	
 	public int getReturned() {
 		return returned;
 	}
 	
+
 	public void setReturned(int returned) {
 		this.returned = returned;
 	}
