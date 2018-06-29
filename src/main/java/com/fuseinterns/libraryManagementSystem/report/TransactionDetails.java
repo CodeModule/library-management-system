@@ -1,18 +1,19 @@
 package com.fuseinterns.libraryManagementSystem.report;
 
 import com.fuseinterns.libraryManagementSystem.borrower.Borrow;
+import com.fuseinterns.libraryManagementSystem.borrower.Return;
 
 import java.util.List;
 
 public class TransactionDetails {
 
     private List<Borrow> issues;
-    private List<Borrow> returns;
+    private List<Return> returns;
 
     private int totalIssues;
     private int totalReturns;
     private int totalTransactions;
-    public TransactionDetails(List<Borrow> issues, List<Borrow> returns) {
+    public TransactionDetails(List<Borrow> issues, List<Return> returns) {
         this.issues = issues;
         this.totalIssues = issues.size();
         this.returns = returns;
@@ -33,7 +34,7 @@ public class TransactionDetails {
         return issues;
     }
 
-    public List<Borrow> getReturns() {
+    public List<Return> getReturns() {
         return returns;
     }
 
