@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fuseinterns.libraryManagementSystem.book.Book;
 import com.fuseinterns.libraryManagementSystem.book.BookService;
+import com.fuseinterns.libraryManagementSystem.finecalculator.FineCalculator;
 import com.fuseinterns.libraryManagementSystem.user.User;
 import com.fuseinterns.libraryManagementSystem.user.UserService;
 
@@ -29,9 +30,11 @@ public class BorrowController {
 	private BookService bookService;
 	@Autowired
 	private UserService userService;
-	
 	@Autowired
-	private BorrowRepository borrowRepository;
+	private FineCalculator fineCalculator;
+	@Autowired
+	private ReturnRepository returnRepository;
+	
 	
 	
 	@RequestMapping(value = "/api/issue" , method= RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
@@ -55,6 +58,25 @@ public class BorrowController {
 		return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
 	
 		  
+	}
+	
+	@RequestMapping(value = "/api/return" , method= RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Return> returnBook(@RequestBody BorroRequest borroRequest) {
+		Book book = bookService.getBookById(borroRequest.getBookId());
+		Borrow borrow = borrowService.getBorrowById(borroRequest.getBookId()+borroRequest.getUserId());
+		if (borrow!=null) {
+			Return retun = new Return();
+			retun.setBorrow(borrow);
+			retun.setFine(fineCalculator.calculateFine(borrow.getReturnedDate()));
+			retun.setActualReturnDate(new Date());
+			returnRepository.save(retun);
+			borrowService.delete(borrow);
+			book.setQuantity(book.getQuantity()+1);
+			bookService.addBook(book);
+			return new ResponseEntity<>(retun,HttpStatus.CREATED);
+		}
+		
+		return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
 	}
 	
 	
