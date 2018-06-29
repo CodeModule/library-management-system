@@ -7,17 +7,6 @@ public class Borrow {
 	@Id
 	private String id;
 	
-	private int returned;
-	
-	public int getReturned() {
-		return returned;
-	}
-	
-
-	public void setReturned(int returned) {
-		this.returned = returned;
-	}
-	
 	private Date borrowedDate;
 	private Date returnedDate;
 	
