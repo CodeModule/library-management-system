@@ -30,7 +30,6 @@ public class BookService {
     }
 
     public List<Book> getAllBooks() {
-        System.out.println("Here");
         this.applicationEventPublisher.publishEvent(new NotificationEvents(this,"Ishan","Book Searched by User","admin"));
 
         return this.bookRepository.findAll();

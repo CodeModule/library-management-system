@@ -2,8 +2,6 @@ package com.fuseinterns.libraryManagementSystem.borrower;
 
 import java.util.Date;
 import org.springframework.data.annotation.Id;
-
-
 public class Borrow {
 	
 	@Id
@@ -45,5 +43,5 @@ public class Borrow {
 
 
 	
-	
+
 }

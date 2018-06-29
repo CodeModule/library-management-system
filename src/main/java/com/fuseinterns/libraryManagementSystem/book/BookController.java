@@ -1,11 +1,13 @@
 package com.fuseinterns.libraryManagementSystem.book;
 
+import com.fuseinterns.libraryManagementSystem.finecalculator.FineCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -14,6 +16,8 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+@Autowired
+private FineCalculator fineCalculator;
 
     @RequestMapping(value = "/api/books", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Book>> getAllBooks(){
