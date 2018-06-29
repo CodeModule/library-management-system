@@ -29,6 +29,10 @@ public class UserService {
 //	public List<User> findByName(String firstName) {
 //		return (List<User>)userRepository.findByFirstName(firstName);
 //	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0e82cb0da4db79a034f6778f94f0d37dbf22a9bd
 
 	public List<User> getAllUser() {
 		return (List<User>) userRepository.findAll();
@@ -38,6 +42,10 @@ public class UserService {
         return this.userRepository.findById(id).orElse(null);
     }
 
+
+	public User getUser(String id){
+		return userRepository.findById(id).orElse(null);
+	}
 	// public void
 
 }
