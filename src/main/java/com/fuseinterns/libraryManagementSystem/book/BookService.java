@@ -10,8 +10,7 @@ import java.util.List;
 
 @Service
 public class BookService {
-    @Autowired
-    private ApplicationEventPublisher applicationEventPublisher;
+  
 
     @Autowired
     private BookRepository bookRepository;
@@ -30,7 +29,7 @@ public class BookService {
     }
 
     public List<Book> getAllBooks() {
-        this.applicationEventPublisher.publishEvent(new NotificationEvents(this,"Ishan","Book Searched by User","admin"));
+       
 
         return this.bookRepository.findAll();
     }

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fuseinterns.libraryManagementSystem.book.Book;
 import com.fuseinterns.libraryManagementSystem.book.BookService;
 import com.fuseinterns.libraryManagementSystem.finecalculator.FineCalculator;
+import com.fuseinterns.libraryManagementSystem.notification.NotificationEvents;
 import com.fuseinterns.libraryManagementSystem.user.User;
 import com.fuseinterns.libraryManagementSystem.user.UserService;
 
@@ -32,6 +34,8 @@ public class BorrowController {
 	private FineCalculator fineCalculator;
 	@Autowired
 	private ReturnRepository returnRepository;
+	@Autowired
+	private ApplicationEventPublisher applicationEventPublisher;
 	
 	
 	
@@ -45,9 +49,15 @@ public class BorrowController {
 			borrow.setBorrowedDate(getCurrentdate());
 			borrow.setReturnedDate(getDateAfterSpecificDays(7));
 			borrowService.add(borrow);
+			if(book.getQuantity()==0) {
+				 this.applicationEventPublisher.publishEvent(new NotificationEvents(this,book.getId(),"Book Out of Stock","admin"));
+			}
+			else {
 			book.setQuantity(book.getQuantity()-1);
 			bookService.addBook(book);
 			return new ResponseEntity<>(borrow,HttpStatus.CREATED);
+			} return new ResponseEntity<>(null,HttpStatus.FORBIDDEN);
+			
 		} 
 		
 		return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
