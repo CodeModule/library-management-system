@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,7 +41,9 @@ public class BorrowController {
 	
 	
 	@RequestMapping(value = "/api/issue" , method= RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Borrow> issueBooktoUser(@RequestBody BorroRequest borroRequest) {
+	public ResponseEntity<Borrow> issueBooktoUser(@RequestBody BorroRequest borroRequest,@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password) {
+		User currentUser = userService.getUserById(userId);
+	    if(currentUser!=null && currentUser.getPassword().equals(password) && currentUser.getRole().toLowerCase().equals("admin")){
 		Book book = bookService.getBookById(borroRequest.getBookId());
 		User user = userService.getUserById(borroRequest.getUserId());
 		if(book!=null && book.getQuantity()>0 && user!=null) {
@@ -52,7 +55,7 @@ public class BorrowController {
 
 			int quantity = book.getQuantity()-1;
 			if(quantity==0){
-				this.applicationEventPublisher.publishEvent(new NotificationEvents(this,book.getId(),"Book Out of Stock","admin"));
+				this.applicationEventPublisher.publishEvent(new NotificationEvents(this,book.getId(),"Book Out of Stock",currentUser.getId()));
 
 			}
 			book.setQuantity(quantity);
@@ -68,33 +71,40 @@ public class BorrowController {
 		
 		return new ResponseEntity<>(new Borrow(),HttpStatus.NOT_FOUND);
 	
-		  
+	    } return new ResponseEntity<>(HttpStatus.FORBIDDEN);  
 	}
 	
 	@RequestMapping(value = "/api/return" , method= RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Return> returnBook(@RequestBody BorroRequest borroRequest) {
-		Book book = bookService.getBookById(borroRequest.getBookId());
-		Borrow borrow = borrowService.getBorrowById(borroRequest.getBookId()+borroRequest.getUserId());
-		if (borrow!=null) {
-			Return retun = new Return();
-			retun.setBorrow(borrow);
-			retun.setFine(fineCalculator.calculateFine(borrow.getReturnedDate()));
-			retun.setActualReturnDate(new Date());
-			returnRepository.save(retun);
-			borrowService.delete(borrow);
-			book.setQuantity(book.getQuantity()+1);
-			bookService.addBook(book);
-			return new ResponseEntity<>(retun,HttpStatus.CREATED);
-		}
-		
-		return new ResponseEntity<>(new Return(),HttpStatus.NOT_FOUND);
+	public ResponseEntity<Return> returnBook(@RequestBody BorroRequest borroRequest,@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password) {
+		User currentUser = userService.getUserById(userId);
+	    if(currentUser!=null && currentUser.getPassword().equals(password) && currentUser.getRole().toLowerCase().equals("admin")){
+			Book book = bookService.getBookById(borroRequest.getBookId());
+			Borrow borrow = borrowService.getBorrowById(borroRequest.getBookId()+borroRequest.getUserId());
+			if (borrow!=null) {
+				Return retun = new Return();
+				retun.setBorrow(borrow);
+				retun.setFine(fineCalculator.calculateFine(borrow.getReturnedDate()));
+				retun.setActualReturnDate(new Date());
+				returnRepository.save(retun);
+				borrowService.delete(borrow);
+				book.setQuantity(book.getQuantity()+1);
+				bookService.addBook(book);
+				return new ResponseEntity<>(retun,HttpStatus.CREATED);
+			}
+			return new ResponseEntity<>(new Return(),HttpStatus.NOT_FOUND);
+	    }
+	    return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 	}
 	
 	
 	@RequestMapping(value = "/api/issue" , method= RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
-	public List<Borrow> getIssued() {
+	public ResponseEntity<List<Borrow>> getIssued(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password) {
+		User currentUser = userService.getUserById(userId);
+	    if(currentUser!=null && currentUser.getPassword().equals(password) && currentUser.getRole().toLowerCase().equals("admin")){
 		
-			return borrowService.showIssued();
+			return new ResponseEntity<>(borrowService.showIssued(),HttpStatus.FOUND);
+	    }
+	    return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 	}
 	 
 	public Date getCurrentdate() {
