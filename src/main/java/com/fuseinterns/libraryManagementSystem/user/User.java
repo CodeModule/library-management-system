@@ -14,6 +14,15 @@ public class User implements Serializable{
     private String lastName;
     private String email;
     private double fine;
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getId() {
         return id;
