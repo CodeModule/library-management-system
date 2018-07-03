@@ -15,6 +15,31 @@ public class User implements Serializable{
     private String email;
     private double fine;
     private String role;
+    private String password;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public double getFine() {
+        return fine;
+    }
+
+    public void setFine(double fine) {
+        this.fine = fine;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getRole() {
         return role;
@@ -48,19 +73,6 @@ public class User implements Serializable{
         this.lastName = lastName;
     }
 
-	public User(String id, String firstName, String lastName,String email, double fine) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email=email;
-		this.fine=fine;
-	}
-
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 
 }

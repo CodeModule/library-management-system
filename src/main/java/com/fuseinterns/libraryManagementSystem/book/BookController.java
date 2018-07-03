@@ -1,6 +1,8 @@
 package com.fuseinterns.libraryManagementSystem.book;
 
 import com.fuseinterns.libraryManagementSystem.finecalculator.FineCalculator;
+import com.fuseinterns.libraryManagementSystem.user.User;
+import com.fuseinterns.libraryManagementSystem.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,6 +17,8 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
+    @Autowired
+    private UserService userService;
 
 @Autowired
 private FineCalculator fineCalculator;
@@ -25,8 +29,13 @@ private FineCalculator fineCalculator;
     }
 
     @RequestMapping(value = "/api/books", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Book> saveBook(@RequestBody Book book){
-        return new ResponseEntity<>(this.bookService.addBook(book), HttpStatus.CREATED);
+    public ResponseEntity<Book> saveBook(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password, @RequestBody Book book){
+        User user = userService.getUserById(userId);
+        if(user!=null && user.getPassword().matches(password) && user.getRole().toLowerCase().equals("admin")){
+            return new ResponseEntity<>(this.bookService.addBook(book), HttpStatus.CREATED);
+
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(value = "/api/books/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

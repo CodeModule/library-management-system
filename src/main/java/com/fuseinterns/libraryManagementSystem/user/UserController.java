@@ -6,11 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.fuseinterns.libraryManagementSystem.book.Book;
 
@@ -29,9 +25,13 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/api/user",method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE )
-	public void saveUser(@RequestBody User user)
+	public void saveUser(@RequestHeader(value = "userId")String userId, @RequestHeader(value = "password")String password, @RequestBody User user)
 	{
-		this.userService.addUser(user);
+		User currentUser = userService.getUserById(userId);
+		if(currentUser!=null && currentUser.getPassword().matches(password) && currentUser.getRole().toLowerCase().equals("admin")) {
+			this.userService.addUser(user);
+		}
+
 	}
 	
 	@RequestMapping(value = "/api/user/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
