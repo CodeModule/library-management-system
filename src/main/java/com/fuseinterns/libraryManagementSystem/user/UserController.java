@@ -29,11 +29,14 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/api/user",method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE )
-	public void saveUser(@RequestHeader(value = "userId")String userId, @RequestHeader(value = "password")String password, @RequestBody User user)
+	public ResponseEntity<User> saveUser(@RequestHeader(value = "userId")String userId, @RequestHeader(value = "password")String password, @RequestBody User user)
 	{
-		
+		User currentUser = userService.getUserById(userId);
+		if(currentUser!=null && currentUser.getPassword().equals(password) && currentUser.getRole().toLowerCase().equals("admin")) {
 			this.userService.addUser(user);
-
+			return new ResponseEntity<>(user,HttpStatus.CREATED);
+		}
+		return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 
 	}
 	
