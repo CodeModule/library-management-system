@@ -44,12 +44,23 @@ private FineCalculator fineCalculator;
     }
 
     @RequestMapping(value = "/api/books/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Book> updateBook(@PathVariable String id , @RequestBody Book book){
-        return new ResponseEntity<>(this.bookService.updateBook(id, book), HttpStatus.OK);
+    public ResponseEntity<Book> updateBook(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password,@PathVariable String id , @RequestBody Book book){
+        User user = userService.getUserById(userId);
+        if(user!=null && user.getPassword().matches(password) && user.getRole().toLowerCase().equals("admin")){
+            return new ResponseEntity<>(this.bookService.updateBook(id, book), HttpStatus.OK);
+
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+
     }
 
     @RequestMapping(value = "/api/books/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Book> updateBook(@PathVariable String id){
-        return new ResponseEntity<>(this.bookService.deleteBook(id), HttpStatus.OK);
+    public ResponseEntity<Book> updateBook(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password,@PathVariable String id){
+        User user = userService.getUserById(userId);
+        if(user!=null && user.getPassword().matches(password) && user.getRole().toLowerCase().equals("admin")){
+            return new ResponseEntity<>(this.bookService.deleteBook(id), HttpStatus.OK);
+
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 }
