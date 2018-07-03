@@ -22,7 +22,7 @@ public class UserController {
 	{
 		//note as ResponseEntity is used so new is a must
 		User currentUser = userService.getUserById(userId);
-		if(currentUser!=null && currentUser.getPassword().matches(password) && currentUser.getRole().toLowerCase().equals("admin")) {
+		if(currentUser!=null && currentUser.getPassword().equals(password) && currentUser.getRole().toLowerCase().equals("admin")) {
 			return new ResponseEntity<>(this.userService.getAllUser(), HttpStatus.OK);		}
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 
@@ -32,7 +32,7 @@ public class UserController {
 	public void saveUser(@RequestHeader(value = "userId")String userId, @RequestHeader(value = "password")String password, @RequestBody User user)
 	{
 		User currentUser = userService.getUserById(userId);
-		if(currentUser!=null && currentUser.getPassword().matches(password) && currentUser.getRole().toLowerCase().equals("admin")) {
+		if(currentUser!=null && currentUser.getPassword().equals(password) && currentUser.getRole().toLowerCase().equals("admin")) {
 			this.userService.addUser(user);
 		}
 
@@ -41,7 +41,7 @@ public class UserController {
 	@RequestMapping(value = "/api/user/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public  void deleteUser(@RequestHeader(value = "userId")String userId, @RequestHeader(value = "password")String password,@PathVariable String id){
 		User currentUser = userService.getUserById(userId);
-		if(currentUser!=null && currentUser.getPassword().matches(password) && currentUser.getRole().toLowerCase().equals("admin")) {
+		if(currentUser!=null && currentUser.getPassword().equals(password) && currentUser.getRole().toLowerCase().equals("admin")) {
 			this.userService.deleteUser(id);
 		}
     }
@@ -49,7 +49,7 @@ public class UserController {
 	 @RequestMapping(value = "/api/user/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	    public ResponseEntity<User> getUserById(@RequestHeader(value = "userId")String userId, @RequestHeader(value = "password")String password,@PathVariable String id){
 		 User currentUser = userService.getUserById(userId);
-		 if(currentUser!=null && currentUser.getPassword().matches(password) && currentUser.getRole().toLowerCase().equals("admin")) {
+		 if(currentUser!=null && currentUser.getPassword().equals(password) && currentUser.getRole().toLowerCase().equals("admin")) {
 			 return new ResponseEntity<>(this.userService.getUserById(id), HttpStatus.OK);
 		 }
 		 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
