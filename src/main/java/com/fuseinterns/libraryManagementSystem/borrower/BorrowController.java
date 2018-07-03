@@ -44,33 +44,33 @@ public class BorrowController {
 	public ResponseEntity<Borrow> issueBooktoUser(@RequestBody BorroRequest borroRequest,@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password) {
 		User currentUser = userService.getUserById(userId);
 	    if(currentUser!=null && currentUser.getPassword().equals(password) && currentUser.getRole().toLowerCase().equals("admin")){
-		Book book = bookService.getBookById(borroRequest.getBookId());
-		User user = userService.getUserById(borroRequest.getUserId());
-		if(book!=null && book.getQuantity()>0 && user!=null) {
-			Borrow borrow = new Borrow();
-			borrow.setId(book.getId()+user.getId());
-			borrow.setBorrowedDate(getCurrentdate());
-			borrow.setReturnedDate(getDateAfterSpecificDays(7));
-			borrowService.add(borrow);
-
-			int quantity = book.getQuantity()-1;
-			if(quantity==0){
-				this.applicationEventPublisher.publishEvent(new NotificationEvents(this,book.getId(),"Book Out of Stock",currentUser.getId()));
-
-			}
-			book.setQuantity(quantity);
-
-			bookService.addBook(book);
-			return new ResponseEntity<>(borrow,HttpStatus.CREATED);
-
-			
-		} else{
-			this.applicationEventPublisher.publishEvent(new NotificationEvents(this,book.getId(),"Book Out of Stock",user.getId()));
-
-		}
-		
-		return new ResponseEntity<>(new Borrow(),HttpStatus.NOT_FOUND);
+			Book book = bookService.getBookById(borroRequest.getBookId());
+			User user = userService.getUserById(borroRequest.getUserId());
+			if(book!=null && book.getQuantity()>0 && user!=null) {
+				Borrow borrow = new Borrow();
+				borrow.setId(book.getId()+user.getId());
+				borrow.setBorrowedDate(getCurrentdate());
+				borrow.setReturnedDate(getDateAfterSpecificDays(7));
+				borrowService.add(borrow);
 	
+				int quantity = book.getQuantity()-1;
+				if(quantity==0){
+					this.applicationEventPublisher.publishEvent(new NotificationEvents(this,book.getId(),"Book Out of Stock",currentUser.getId()));
+	
+				}
+				book.setQuantity(quantity);
+	
+				bookService.addBook(book);
+				return new ResponseEntity<>(borrow,HttpStatus.CREATED);
+	
+				
+			} else{
+				this.applicationEventPublisher.publishEvent(new NotificationEvents(this,book.getId(),"Book Out of Stock",user.getId()));
+	
+			}
+			
+			return new ResponseEntity<>(new Borrow(),HttpStatus.NOT_FOUND);
+		
 	    } return new ResponseEntity<>(HttpStatus.FORBIDDEN);  
 	}
 	
@@ -91,7 +91,7 @@ public class BorrowController {
 				bookService.addBook(book);
 				return new ResponseEntity<>(retun,HttpStatus.CREATED);
 			}
-			return new ResponseEntity<>(new Return(),HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	    }
 	    return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 	}
