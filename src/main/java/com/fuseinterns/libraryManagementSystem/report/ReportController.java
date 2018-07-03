@@ -16,8 +16,8 @@ private ReportBuilder reportBuilder;
 private UserService userService;
 
     @RequestMapping(value = "api/{user}/report", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Report> getReport(@RequestHeader(value="userId") String userId, @PathVariable String user) {
-        if(userService.getUserById(userId)!=null && userService.getUserById(userId).getRole().equals(user)){
+    public ResponseEntity<Report> getReport(@RequestHeader(value="userId") String userId, @RequestHeader(value = "password")String password, @PathVariable String user) {
+        if(userService.getUserById(userId)!=null && userService.getUserById(userId).getPassword().equals(password)&& userService.getUserById(userId).getRole().equals(user)){
             return new ResponseEntity<>( reportBuilder.generateReport(), HttpStatus.OK);
 
         } else{
