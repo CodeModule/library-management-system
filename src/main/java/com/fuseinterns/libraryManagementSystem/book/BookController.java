@@ -24,8 +24,13 @@ public class BookController {
 private FineCalculator fineCalculator;
 
     @RequestMapping(value = "/api/books", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Book>> getAllBooks(){
-        return new ResponseEntity<>(this.bookService.getAllBooks(), HttpStatus.OK);
+    public ResponseEntity<List<Book>> getAllBooks(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password){
+        User user = userService.getUserById(userId);
+        if(user!=null && user.getPassword().matches(password)){
+            return new ResponseEntity<>(this.bookService.getAllBooks(), HttpStatus.OK);
+
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(value = "/api/books", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -39,8 +44,13 @@ private FineCalculator fineCalculator;
     }
 
     @RequestMapping(value = "/api/books/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Book> getBookById(@PathVariable String id){
-        return new ResponseEntity<>(this.bookService.getBookById(id), HttpStatus.OK);
+    public ResponseEntity<Book> getBookById(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password,@PathVariable String id){
+        User user = userService.getUserById(userId);
+        if(user!=null && user.getPassword().matches(password)){
+            return new ResponseEntity<>(this.bookService.getBookById(id), HttpStatus.OK);
+
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(value = "/api/books/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
