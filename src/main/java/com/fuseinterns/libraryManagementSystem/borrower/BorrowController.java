@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.fuseinterns.libraryManagementSystem.book.Book;
 import com.fuseinterns.libraryManagementSystem.book.BookService;
+import com.fuseinterns.libraryManagementSystem.book.Unauathorized;
 import com.fuseinterns.libraryManagementSystem.finecalculator.FineCalculator;
 import com.fuseinterns.libraryManagementSystem.notification.NotificationEvents;
 import com.fuseinterns.libraryManagementSystem.user.User;
@@ -71,7 +72,7 @@ public class BorrowController {
 			
 			return new ResponseEntity<>(new Borrow(),HttpStatus.NOT_FOUND);
 		
-	    }else return new ResponseEntity<>("ADMIN Username or Password Wrong! Check the Credentials.",HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);  
+	    }else return new ResponseEntity<>(new Unauathorized(userId,"Unauthorized"),HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);  
 	}
 	
 	@RequestMapping(value = "/api/return" , method= RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
@@ -93,7 +94,7 @@ public class BorrowController {
 			}
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	    }
-	    else return new ResponseEntity<>("ADMIN Username or Password Wrong! Check the Credentials.",HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
+	    else return new ResponseEntity<>(new Unauathorized(userId,"Unauthorized"),HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
 	}
 	
 	
@@ -104,7 +105,7 @@ public class BorrowController {
 		
 			return new ResponseEntity<>(borrowService.showIssued(),HttpStatus.FOUND);
 	    }
-	    return new ResponseEntity<>("ADMIN Username or Password Wrong! Check the Credentials.",HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
+	    return new ResponseEntity<>(new Unauathorized(userId,"Unauthorized"),HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
 	}
 	 
 	public Date getCurrentdate() {
