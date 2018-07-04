@@ -41,7 +41,7 @@ public class BorrowController {
 	
 	
 	@RequestMapping(value = "/api/issue" , method= RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Borrow> issueBooktoUser(@RequestBody BorroRequest borroRequest,@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password) {
+	public ResponseEntity<?> issueBooktoUser(@RequestBody BorroRequest borroRequest,@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password) {
 		User currentUser = userService.getUserById(userId);
 	    if(currentUser!=null && currentUser.getPassword().equals(password) && currentUser.getRole().toLowerCase().equals("admin")){
 			Book book = bookService.getBookById(borroRequest.getBookId());
@@ -71,11 +71,11 @@ public class BorrowController {
 			
 			return new ResponseEntity<>(new Borrow(),HttpStatus.NOT_FOUND);
 		
-	    } return new ResponseEntity<>(HttpStatus.FORBIDDEN);  
+	    }else return new ResponseEntity<>("ADMIN Username or Password Wrong! Check the Credentials.",HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);  
 	}
 	
 	@RequestMapping(value = "/api/return" , method= RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Return> returnBook(@RequestBody BorroRequest borroRequest,@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password) {
+	public ResponseEntity<?> returnBook(@RequestBody BorroRequest borroRequest,@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password) {
 		User currentUser = userService.getUserById(userId);
 	    if(currentUser!=null && currentUser.getPassword().equals(password) && currentUser.getRole().toLowerCase().equals("admin")){
 			Book book = bookService.getBookById(borroRequest.getBookId());
@@ -93,18 +93,18 @@ public class BorrowController {
 			}
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	    }
-	    return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+	    else return new ResponseEntity<>("ADMIN Username or Password Wrong! Check the Credentials.",HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
 	}
 	
 	
 	@RequestMapping(value = "/api/issue" , method= RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Borrow>> getIssued(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password) {
+	public ResponseEntity<?> getIssued(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password) {
 		User currentUser = userService.getUserById(userId);
 	    if(currentUser!=null && currentUser.getPassword().equals(password) && currentUser.getRole().toLowerCase().equals("admin")){
 		
 			return new ResponseEntity<>(borrowService.showIssued(),HttpStatus.FOUND);
 	    }
-	    return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+	    return new ResponseEntity<>("ADMIN Username or Password Wrong! Check the Credentials.",HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
 	}
 	 
 	public Date getCurrentdate() {
