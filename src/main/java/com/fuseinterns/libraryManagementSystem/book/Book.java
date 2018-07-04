@@ -24,14 +24,7 @@ public class Book {
 		this.id = id;
 	}
 	
-//	 public Book(String name, String author, String id, String price) {
-//	        super();
-//	        this.name = name;
-//	        this.author = author;
-//	        this.id = id;
-//	        this.price = price;
-//	    }
- 
+
 	public String getName() {
 		return name;
 	}
