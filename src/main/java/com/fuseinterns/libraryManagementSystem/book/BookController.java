@@ -9,10 +9,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class BookController {
 
     @Autowired
@@ -53,7 +56,7 @@ private FineCalculator fineCalculator;
     public ResponseEntity<?> getBookById(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password,@PathVariable String id){
         User user = userService.getUserById(userId);
         if(user!=null && user.getPassword().equals(password)){
-            return new ResponseEntity<>(this.bookService.getBookById(id), HttpStatus.OK);
+            return new ResponseEntity<>(Collections.singletonList(this.bookService.getBookById(id)), HttpStatus.OK);
 
         }
         return new ResponseEntity<>(new Unauathorized(userId,"Unauthorized"), HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);

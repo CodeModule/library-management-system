@@ -9,7 +9,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/borrower/BorrowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/borrower/BorrowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/notification/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/notification/NotificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/user/UserController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -44,11 +50,8 @@
       <file leaf-file-name="Book.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/Book.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -56,7 +59,7 @@
       <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/user/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="150">
               <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
               <folding>
                 <element signature="e#495#496#0" expanded="true" />
@@ -79,35 +82,17 @@
       <file leaf-file-name="ReportController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/ReportController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="25" column="9" lean-forward="true" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+            <state relative-caret-position="90">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Report.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/Report.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="28" column="34" lean-forward="true" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserDetails.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/UserDetails.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BookController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BookController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/BookController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="32" column="126" lean-forward="true" selection-start-line="32" selection-start-column="126" selection-end-line="32" selection-end-column="126" />
+            <state relative-caret-position="255">
+              <caret line="17" column="40" selection-start-line="17" selection-end-line="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,30 +100,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Unauathorized.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/Unauathorized.java">
+      <file leaf-file-name="BorrowController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/borrower/BorrowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-              <folding>
-                <element signature="e#277#278#0" expanded="true" />
-                <element signature="e#302#303#0" expanded="true" />
-                <element signature="e#338#339#0" expanded="true" />
-                <element signature="e#366#367#0" expanded="true" />
-                <element signature="e#400#401#0" expanded="true" />
-                <element signature="e#430#431#0" expanded="true" />
-                <element signature="e#476#477#0" expanded="true" />
-                <element signature="e#514#515#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="465">
+              <caret line="74" column="78" selection-start-line="74" selection-start-column="78" selection-end-line="74" selection-end-column="78" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BorrowController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/borrower/BorrowController.java">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-648">
-              <caret line="42" column="4" lean-forward="true" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
+            <state relative-caret-position="417">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BorroRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/borrower/BorroRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BorrowService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/borrower/BorrowService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="305">
+              <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+              <folding>
+                <element signature="e#406#407#0" expanded="true" />
+                <element signature="e#446#447#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,8 +143,8 @@
       <file leaf-file-name="NotificationController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/notification/NotificationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="24" column="104" lean-forward="true" selection-start-line="24" selection-start-column="104" selection-end-line="24" selection-end-column="104" />
+            <state relative-caret-position="90">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
@@ -155,8 +152,8 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/user/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="58" selection-start-line="58" selection-end-line="58" />
+            <state relative-caret-position="675">
+              <caret line="58" column="99" selection-start-line="58" selection-start-column="99" selection-end-line="58" selection-end-column="99" />
             </state>
           </provider>
         </entry>
@@ -445,9 +442,9 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="6122429928000" />
+        <entry key="$PROJECT_DIR$" value="6122548116000" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="3240985440" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="2176675934" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="2083459160" />
         <entry key="$PROJECT_DIR$/settings.gradle" value="2433751111" />
       </map>
@@ -745,10 +742,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/Report.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/TransactionDetails.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/ReportBuilder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/borrower/BorrowController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/SignupLogin/McvConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/SignupLogin/WebSecurityConfig.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/user/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/user/Authentication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/user/User.java" />
@@ -756,26 +751,28 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/LibraryManagementSystemApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/ApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/Unauathorized.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/user/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/Book.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/ReportController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/notification/NotificationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/UserDetails.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/Book.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/BookController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/notification/NotificationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/ReportController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/user/UserController.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/borrower/BorrowController.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="62" />
     <option name="y" value="27" />
-    <option name="width" value="1858" />
+    <option name="width" value="929" />
     <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages ProjectPane="false" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
@@ -910,6 +907,15 @@
               <item name="src/main" type="cbb8eebc:String" user="src/main" />
               <item name="java" type="cbb8eebc:String" user="java" />
               <item name="com/fuseinterns/libraryManagementSystem" type="cbb8eebc:String" user="com/fuseinterns/libraryManagementSystem" />
+              <item name="borrower" type="cbb8eebc:String" user="borrower" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="libraryManagementSystem" type="cbb8eebc:String" user="libraryManagementSystem" />
+              <item name="libraryManagementSystem_main" type="cbb8eebc:String" user="libraryManagementSystem_main" />
+              <item name="src/main" type="cbb8eebc:String" user="src/main" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="com/fuseinterns/libraryManagementSystem" type="cbb8eebc:String" user="com/fuseinterns/libraryManagementSystem" />
               <item name="notification" type="cbb8eebc:String" user="notification" />
             </path>
             <path>
@@ -921,6 +927,33 @@
               <item name="com/fuseinterns/libraryManagementSystem" type="cbb8eebc:String" user="com/fuseinterns/libraryManagementSystem" />
               <item name="report" type="cbb8eebc:String" user="report" />
             </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="libraryManagementSystem" type="cbb8eebc:String" user="libraryManagementSystem" />
+              <item name="libraryManagementSystem_main" type="cbb8eebc:String" user="libraryManagementSystem_main" />
+              <item name="src/main" type="cbb8eebc:String" user="src/main" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="com/fuseinterns/libraryManagementSystem" type="cbb8eebc:String" user="com/fuseinterns/libraryManagementSystem" />
+              <item name="user" type="cbb8eebc:String" user="user" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="libraryManagementSystem" type="cbb8eebc:String" user="libraryManagementSystem" />
+              <item name="libraryManagementSystem_test" type="cbb8eebc:String" user="libraryManagementSystem_test" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="libraryManagementSystem" type="cbb8eebc:String" user="libraryManagementSystem" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="libraryManagementSystem" type="cbb8eebc:String" user="libraryManagementSystem" />
+              <item name="library-management-system" type="cbb8eebc:String" user="library-management-system" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="External Dependencies" type="cbb8eebc:String" user="External Dependencies" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -929,7 +962,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="bookId&#9;PSI&#9;JAVA://com.fuseinterns.libraryManagementSystem.book.BookController#getBookById" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/demo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../library-management-system-ui" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
@@ -1027,21 +1060,23 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="62" y="27" width="1858" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="bottom" id="TODO" order="12" />
       <window_info anchor="right" id="Palette&#9;" order="2" />
       <window_info id="Image Layers" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.34983853" side_tool="true" visible="true" weight="0.32978722" />
+      <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.35037675" side_tool="true" visible="true" weight="0.32978722" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" sideWeight="0.65016145" visible="true" weight="0.32978722" />
+      <window_info active="true" anchor="bottom" id="Run" order="8" sideWeight="0.6496233" visible="true" weight="0.32978722" />
       <window_info anchor="bottom" id="Version Control" order="4" />
       <window_info anchor="bottom" id="Terminal" order="2" />
       <window_info id="Capture Tool" order="1" />
       <window_info id="Designer" order="0" />
       <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.22874059" />
       <window_info anchor="bottom" id="Problems" order="0" />
+      <window_info anchor="bottom" id="Build" order="5" sideWeight="0.49784714" weight="0.32978722" />
       <window_info anchor="right" id="Gradle" order="1" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
@@ -1055,7 +1090,6 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
-      <window_info anchor="bottom" id="Build" order="5" sideWeight="0.49838537" weight="0.32978722" />
       <window_info anchor="bottom" id="Find" order="7" />
     </layout>
   </component>
@@ -1081,13 +1115,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/fineCalculator/FineRepository.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/fineCalculator/FineCalculator.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/fineCalculator/Fine.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/borrower/BorroRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/BookRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1119,13 +1146,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/borrower/BorrowService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -1216,13 +1236,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/SignupLogin/RoleRepository.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/SignupLogin/WebSecurityConfig.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/SignupLogin/UserRepository.java" />
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/user/UserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1249,7 +1262,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/Unauathorized.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
           <folding>
             <element signature="e#277#278#0" expanded="true" />
             <element signature="e#302#303#0" expanded="true" />
@@ -1263,16 +1276,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/borrower/BorrowController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/Report.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-648">
-          <caret line="42" column="4" lean-forward="true" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
+        <state relative-caret-position="315">
+          <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/UserDetails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/user/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="150">
           <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
           <folding>
             <element signature="e#495#496#0" expanded="true" />
@@ -1291,17 +1318,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/user/UserController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/BookController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="255">
+          <caret line="17" column="40" selection-start-line="17" selection-end-line="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1310,39 +1330,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/notification/NotificationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="24" column="104" lean-forward="true" selection-start-line="24" selection-start-column="104" selection-end-line="24" selection-end-column="104" />
+        <state relative-caret-position="90">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/ReportController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="25" column="9" lean-forward="true" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+        <state relative-caret-position="90">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/Report.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/user/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="28" column="34" lean-forward="true" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+        <state relative-caret-position="675">
+          <caret line="58" column="99" selection-start-line="58" selection-start-column="99" selection-end-line="58" selection-end-column="99" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/report/UserDetails.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/borrower/BorrowService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/book/BookController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="32" column="126" lean-forward="true" selection-start-line="32" selection-start-column="126" selection-end-line="32" selection-end-column="126" />
+        <state relative-caret-position="305">
+          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#406#407#0" expanded="true" />
+            <element signature="e#446#447#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/borrower/BorroRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fuseinterns/libraryManagementSystem/borrower/BorrowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="74" column="78" selection-start-line="74" selection-start-column="78" selection-end-line="74" selection-end-column="78" />
         </state>
       </provider>
     </entry>

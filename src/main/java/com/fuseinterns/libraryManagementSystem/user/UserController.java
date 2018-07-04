@@ -1,5 +1,6 @@
 package com.fuseinterns.libraryManagementSystem.user;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.fuseinterns.libraryManagementSystem.book.Unauathorized;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import com.fuseinterns.libraryManagementSystem.book.Book;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
+
 public class UserController {
 	
 	@Autowired
@@ -53,7 +56,7 @@ public class UserController {
 	    public ResponseEntity<?> getUserById(@RequestHeader(value = "userId")String userId, @RequestHeader(value = "password")String password,@PathVariable String id){
 		 User currentUser = userService.getUserById(userId);
 		 if(currentUser!=null && currentUser.getPassword().equals(password) && currentUser.getRole().toLowerCase().equals("admin")) {
-			 return new ResponseEntity<>(this.userService.getUserById(id), HttpStatus.OK);
+			 return new ResponseEntity<>(Collections.singletonList(this.userService.getUserById(id)), HttpStatus.OK);
 		 }
 		 return new ResponseEntity<>(new Unauathorized(userId,"Unauthorized"), HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
 	    }

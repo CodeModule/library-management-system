@@ -1,8 +1,6 @@
 package com.fuseinterns.libraryManagementSystem.book;
 
-import com.fuseinterns.libraryManagementSystem.notification.NotificationEvents;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
+
 import org.springframework.data.annotation.Id;
 
 
