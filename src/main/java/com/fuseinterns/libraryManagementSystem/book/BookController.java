@@ -24,53 +24,54 @@ public class BookController {
 private FineCalculator fineCalculator;
 
     @RequestMapping(value = "/api/books", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Book>> getAllBooks(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password){
+    public ResponseEntity<?> getAllBooks(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password){
         User user = userService.getUserById(userId);
         if(user!=null && user.getPassword().equals(password)){
             return new ResponseEntity<>(this.bookService.getAllBooks(), HttpStatus.OK);
 
+        }else{
+            return new ResponseEntity<>("Unauthorized", HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
         }
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(value = "/api/books", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Book> saveBook(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password, @RequestBody Book book){
+    public ResponseEntity<?> saveBook(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password, @RequestBody Book book){
         User user = userService.getUserById(userId);
         if(user!=null && user.getPassword().equals(password) && user.getRole().toLowerCase().equals("admin")){
             return new ResponseEntity<>(this.bookService.addBook(book), HttpStatus.CREATED);
 
         }
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>("Unauthorized", HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
     }
 
     @RequestMapping(value = "/api/books/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Book> getBookById(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password,@PathVariable String id){
+    public ResponseEntity<?> getBookById(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password,@PathVariable String id){
         User user = userService.getUserById(userId);
         if(user!=null && user.getPassword().equals(password)){
             return new ResponseEntity<>(this.bookService.getBookById(id), HttpStatus.OK);
 
         }
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>("Unauthorized", HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
     }
 
     @RequestMapping(value = "/api/books/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Book> updateBook(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password,@PathVariable String id , @RequestBody Book book){
+    public ResponseEntity<?> updateBook(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password,@PathVariable String id , @RequestBody Book book){
         User user = userService.getUserById(userId);
         if(user!=null && user.getPassword().equals(password) && user.getRole().toLowerCase().equals("admin")){
             return new ResponseEntity<>(this.bookService.updateBook(id, book), HttpStatus.OK);
 
         }
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>("Unauthorized", HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
 
     }
 
     @RequestMapping(value = "/api/books/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Book> updateBook(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password,@PathVariable String id){
+    public ResponseEntity<?> updateBook(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password,@PathVariable String id){
         User user = userService.getUserById(userId);
         if(user!=null && user.getPassword().equals(password) && user.getRole().toLowerCase().equals("admin")){
             return new ResponseEntity<>(this.bookService.deleteBook(id), HttpStatus.OK);
 
         }
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>("Unauthorized", HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
     }
 }
