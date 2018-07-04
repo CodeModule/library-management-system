@@ -21,7 +21,7 @@ public class NotificationController {
 
     @RequestMapping(value = "/api/{user}/notifications", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getNotifications(@RequestHeader(value = "userId")String userId, @RequestHeader(value = "password")String password, @PathVariable String user) {
-        if(userService.getUserById(userId)!=null && userId.equals(user)){
+        if(userService.getUserById(userId)!=null && userService.getUserById(userId).getPassword().equals(password)&& userId.equals(user)){
             return new ResponseEntity<>(this.notificationService.getNotifications(user), HttpStatus.OK);
 
         } else{
