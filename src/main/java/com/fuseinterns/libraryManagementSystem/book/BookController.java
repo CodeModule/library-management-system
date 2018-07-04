@@ -38,7 +38,12 @@ private FineCalculator fineCalculator;
     public ResponseEntity<?> saveBook(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password, @RequestBody Book book){
         User user = userService.getUserById(userId);
         if(user!=null && user.getPassword().equals(password) && user.getRole().toLowerCase().equals("admin")){
-            return new ResponseEntity<>(this.bookService.addBook(book), HttpStatus.CREATED);
+            if(bookService.getBookById(book.getId())==null){
+                return new ResponseEntity<>(this.bookService.addBook(book), HttpStatus.CREATED);
+
+            }else{
+                return new ResponseEntity<>(new Unauathorized(userId,"Book Already Exists (Duplicate ID)"),HttpStatus.CONFLICT);
+            }
 
         }
         return new ResponseEntity<>(new Unauathorized(userId,"Unauthorized"), HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
