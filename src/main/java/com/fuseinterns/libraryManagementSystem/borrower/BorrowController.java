@@ -37,6 +37,8 @@ public class BorrowController {
 	@Autowired
 	private ReturnRepository returnRepository;
 	@Autowired
+	private BorrowRepository borrowRepository;
+	@Autowired
 	private ApplicationEventPublisher applicationEventPublisher;
 	
 	
@@ -47,20 +49,18 @@ public class BorrowController {
 	    if(currentUser!=null && currentUser.getPassword().equals(password) && currentUser.getRole().toLowerCase().equals("admin")){
 			Book book = bookService.getBookById(borroRequest.getBookId());
 			User user = userService.getUserById(borroRequest.getUserId());
-			if(book!=null && book.getQuantity()>0 && user!=null) {
+			if(borrowService.getBorrowById(borroRequest.getBookId()+borroRequest.getUserId())==null && book!=null && book.getQuantity()>0 && user!=null) {
 				Borrow borrow = new Borrow();
 				borrow.setId(book.getId()+user.getId());
 				borrow.setBorrowedDate(getCurrentdate());
 				borrow.setReturnedDate(getDateAfterSpecificDays(7));
 				borrowService.add(borrow);
-	
 				int quantity = book.getQuantity()-1;
 				if(quantity==0){
 					this.applicationEventPublisher.publishEvent(new NotificationEvents(this,book.getId(),"Book Out of Stock",currentUser.getId()));
 	
 				}
 				book.setQuantity(quantity);
-	
 				bookService.addBook(book);
 				return new ResponseEntity<>(borrow,HttpStatus.CREATED);
 	
@@ -70,7 +70,7 @@ public class BorrowController {
 	
 			}
 			
-			return new ResponseEntity<>(new Borrow(),HttpStatus.NOT_FOUND);
+			 return new ResponseEntity<>(new Unauathorized(userId,"Book Already Issued"),HttpStatus.NOT_FOUND);
 		
 	    }else return new ResponseEntity<>(new Unauathorized(userId,"Unauthorized"),HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);  
 	}
@@ -92,7 +92,7 @@ public class BorrowController {
 				bookService.addBook(book);
 				return new ResponseEntity<>(retun,HttpStatus.CREATED);
 			}
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			else return new ResponseEntity<>(new Unauathorized(userId,"BookId or UserId Not Found"),HttpStatus.NOT_FOUND);
 	    }
 	    else return new ResponseEntity<>(new Unauathorized(userId,"Unauthorized"),HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
 	}
