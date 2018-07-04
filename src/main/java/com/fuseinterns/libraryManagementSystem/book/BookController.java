@@ -26,11 +26,11 @@ private FineCalculator fineCalculator;
     @RequestMapping(value = "/api/books", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getAllBooks(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password){
         User user = userService.getUserById(userId);
-        if(user!=null && user.getPassword().equals(password)){
+        if(user!=null && password.equals(user.getPassword())){
             return new ResponseEntity<>(this.bookService.getAllBooks(), HttpStatus.OK);
 
         }else{
-            return new ResponseEntity<>("Unauthorized", HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
+            return new ResponseEntity<>(new Unauathorized(userId,"Unauthorized"), HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
         }
     }
 
@@ -41,7 +41,7 @@ private FineCalculator fineCalculator;
             return new ResponseEntity<>(this.bookService.addBook(book), HttpStatus.CREATED);
 
         }
-        return new ResponseEntity<>("Unauthorized", HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
+        return new ResponseEntity<>(new Unauathorized(userId,"Unauthorized"), HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
     }
 
     @RequestMapping(value = "/api/books/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -51,17 +51,18 @@ private FineCalculator fineCalculator;
             return new ResponseEntity<>(this.bookService.getBookById(id), HttpStatus.OK);
 
         }
-        return new ResponseEntity<>("Unauthorized", HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
+        return new ResponseEntity<>(new Unauathorized(userId,"Unauthorized"), HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
     }
 
     @RequestMapping(value = "/api/books/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> updateBook(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password,@PathVariable String id , @RequestBody Book book){
         User user = userService.getUserById(userId);
         if(user!=null && user.getPassword().equals(password) && user.getRole().toLowerCase().equals("admin")){
-            return new ResponseEntity<>(this.bookService.updateBook(id, book), HttpStatus.OK);
+            this.bookService.updateBook(id, book);
+            return new ResponseEntity<>(book, HttpStatus.CREATED);
 
         }
-        return new ResponseEntity<>("Unauthorized", HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
+        return new ResponseEntity<>(new Unauathorized(userId,"Unauthorized"), HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
 
     }
 
@@ -72,6 +73,6 @@ private FineCalculator fineCalculator;
             return new ResponseEntity<>(this.bookService.deleteBook(id), HttpStatus.OK);
 
         }
-        return new ResponseEntity<>("Unauthorized", HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
+        return new ResponseEntity<>(new Unauathorized(userId,"Unauthorized"), HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
     }
 }
