@@ -56,7 +56,11 @@ private FineCalculator fineCalculator;
     public ResponseEntity<?> getBookById(@RequestHeader(value = "userId")String userId,@RequestHeader(value = "password")String password,@PathVariable String id){
         User user = userService.getUserById(userId);
         if(user!=null && user.getPassword().equals(password)){
-            return new ResponseEntity<>(Collections.singletonList(this.bookService.getBookById(id)), HttpStatus.OK);
+            if(this.bookService.getBookById(id)!= null){
+                return new ResponseEntity<>(Collections.singletonList(this.bookService.getBookById(id)), HttpStatus.OK);
+
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         }
         return new ResponseEntity<>(new Unauathorized(userId,"Unauthorized"), HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
